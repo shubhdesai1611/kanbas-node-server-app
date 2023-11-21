@@ -94,15 +94,14 @@ const Lab5 = (app) => {
 
   app.get("/a5/todos", (req, res) => {
     const { completed } = req.query;
-    const boolean_completed = Boolean(true ? completed === "true" : false);
-    if (boolean_completed !== undefined) {
-      const completedTodos = todos.filter(
-        (t) => t.completed === boolean_completed
-      );
+    if (completed !== undefined) {
+      const completedTodos = todos.filter((t) => t.completed === true);
       res.json(completedTodos);
       return;
     }
+    res.json(todos);
   });
+
   app.get("/a5/todos/:id/title/:title", (req, res) => {
     const { id, title } = req.params;
     const todo = todos.find((t) => t.id === parseInt(id));
