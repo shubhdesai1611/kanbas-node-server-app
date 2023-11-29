@@ -6,7 +6,9 @@ import CourseRoutes from "./courses/routes.js";
 import ModuleRoutes from "./modules/routes.js";
 import AssignmentRoutes from "./assignments/routes.js";
 import mongoose from "mongoose";
-mongoose.connect("mongodb://localhost:27017/kanbas");
+const CONNECTION_STRING =
+  process.env.DB_CONNECTION_STRING || "mongodb://localhost:27017/kanbas";
+mongoose.connect(CONNECTION_STRING);
 import UserRoutes from "./users/routes.js";
 import "dotenv/config";
 import session from "express-session";
